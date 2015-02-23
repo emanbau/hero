@@ -67,7 +67,7 @@ def game_loop():
         x += x_change
         y += y_change
         
-        gameDisplay.fill(white)
+        gameDisplay.fill(red)
         hero(x,y)
 
         if x > Display_width or x < 0:
