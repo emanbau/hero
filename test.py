@@ -38,15 +38,30 @@ def game_loop():
             if event.type == pygame.QUIT:
                 gameExit = True
 
+
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    x_change = -5
+                    if x <= 0:
+                        x = 0
+                    else:
+                        x_change = -5
                 elif event.key == pygame.K_RIGHT:
-                    x_change = 5
+                    if x >= Display_width:
+                        x = 0
+                    else:
+                        x_change = 5
                 elif event.key == pygame.K_UP:
-                    y_change = -5
+                    if y <= 0:
+                        y = 0
+                    else:
+                        y_change = -5
+                    
                 elif event.key == pygame.K_DOWN:
-                    y_change = 5
+                    if y >= Display_height:
+                        x = 0
+                    else:
+                        y_change = 5
                 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -54,14 +69,15 @@ def game_loop():
                 elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                     y_change = 0
 
-            if x > Display_width or x < 0:
-                gameExit = True
-            elif y > Display_height or y < 0:
-                gameExit = True
 
 
         x += x_change
         y += y_change
+
+        if x < 0:
+            x = 0
+        if y < 0:
+            y = 0
         
         gameDisplay.fill(white)
         hero(x,y)
