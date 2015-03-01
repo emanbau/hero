@@ -42,26 +42,14 @@ def game_loop():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    if x <= 0:
-                        x = 0
-                    else:
-                        x_change = -5
+                    x_change = -5
                 elif event.key == pygame.K_RIGHT:
-                    if x >= Display_width:
-                        x = 0
-                    else:
-                        x_change = 5
+                    x_change = 5
                 elif event.key == pygame.K_UP:
-                    if y <= 0:
-                        y = 0
-                    else:
-                        y_change = -5
+                    y_change = -5
                     
                 elif event.key == pygame.K_DOWN:
-                    if y >= Display_height:
-                        x = 0
-                    else:
-                        y_change = 5
+                    y_change = 5
                 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -70,14 +58,17 @@ def game_loop():
                     y_change = 0
 
 
-
         x += x_change
         y += y_change
 
         if x < 0:
             x = 0
+        elif x > Display_width - 66:
+            x = Display_width - 66
         if y < 0:
             y = 0
+        elif y > Display_height - 77:
+            y = Display_height - 77
         
         gameDisplay.fill(white)
         hero(x,y)
